@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const colores = {
     borde:"#0075FF",
-    error:"#bb2929",
+    error:"#F66060",
     exito:"#1ed12d"
 }
 const Formulario = styled.form `
@@ -46,6 +46,8 @@ const LeyendaError = styled.p`
         font-size: 12px;
         margin-bottom: 0;
         color: ${colores.error};
+        display: none;
+
 
 `;
 const IconoValidacion = styled(FontAwesomeIcon)`
@@ -54,6 +56,59 @@ const IconoValidacion = styled(FontAwesomeIcon)`
         bottom: 14px;
         z-index: 100;
         font-size: 16px;
+        display: none;
+
+`;
+
+const ContenedorTerminos = styled.div`
+        grid-column: span 2;
+        input{
+            margin-right: 10px;
+        }
+`;
+const ContenedorBotonCentrado = styled.div`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-column: span 2;
+`;
+const Boton = styled.button`
+        height: 45px;
+        line-height: 45px;
+        width: 30%;
+        background: #000;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: .1s ease all;
+
+        $:hover{
+            box-shadow: 3px 0px 30px rgba(163,163,163, 1)
+        }
+`;
+const MensajeExito = styled.p`
+        font-size: 14px;
+        color: ${colores.exito};
+        display: none;
+
+`;
+const MensajeError = styled.div`
+        height: 45px;
+        line-height: 45px;
+        background: ${colores.error};
+        padding: 0px 15px;
+        border-radius: 3px;
+        grid-column: span 2;
+        display: none;
+
+        p{
+            margin:0;
+        }
+        b{
+            margin-left: 10px
+        }
 `;
 
 
@@ -63,7 +118,16 @@ const IconoValidacion = styled(FontAwesomeIcon)`
 
 
 
-
-
-
-export {Formulario,Label, GrupoInput, Input, LeyendaError, IconoValidacion};
+export {
+    Formulario,
+    Label, 
+    GrupoInput,
+    Input,
+    LeyendaError,
+    IconoValidacion,
+    ContenedorTerminos,
+    ContenedorBotonCentrado,
+    Boton,
+    MensajeError,
+    MensajeExito
+};
