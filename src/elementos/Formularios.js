@@ -1,13 +1,15 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 const colores = {
-    borde:"#0075FF",
-    error:"#F66060",
-    exito:"#1ed12d"
+    borde: "#0075FF",
+    error: "#F66060",
+    exito: "#1ed12d",
+    errorIcono: "red"
+
 }
-const Formulario = styled.form `
+const Formulario = styled.form`
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -15,14 +17,14 @@ const Formulario = styled.form `
         @media(max-width: 800px){
             grid-template-columns: 1fr;
 }`;
-const Label = styled.label `
+const Label = styled.label`
         display: block;
         font-weight:700;
         padding:10px;
         min-heigh:40px;
         cursor: pointer;
 `;
-const GrupoInput = styled.div `
+const GrupoInput = styled.div`
         position: relative;
         z-index: 90;
 `;
@@ -41,6 +43,14 @@ const Input = styled.input`
             outline: none;
             box-shadow: 3px 0px 30px rgba(163,163,163, 0.4)
         }
+
+        ${props => props.valido === 'true' && css`
+            border: 3px solid transparent;
+        ` }
+        ${props => props.valido === 'false' && css`
+            border: 3px solid ${colores.error} !important;
+        ` }
+        
 `;
 const LeyendaError = styled.p`
         font-size: 12px;
@@ -48,6 +58,12 @@ const LeyendaError = styled.p`
         color: ${colores.error};
         display: none;
 
+        ${props => props.valido === 'true' && css`
+            display: none;
+        ` }
+        ${props => props.valido === 'false' && css`
+            display: block;
+        ` }
 
 `;
 const IconoValidacion = styled(FontAwesomeIcon)`
@@ -56,7 +72,16 @@ const IconoValidacion = styled(FontAwesomeIcon)`
         bottom: 14px;
         z-index: 100;
         font-size: 16px;
-        display: none;
+        opacity: 0;
+
+        ${props => props.valido === 'false' && css`
+            opacity:1;
+            color: ${colores.errorIcono}
+        ` }
+        ${props => props.valido === 'true' && css`
+            opacity:1;
+            color: ${colores.exito}
+        ` }
 
 `;
 
@@ -120,7 +145,7 @@ const MensajeError = styled.div`
 
 export {
     Formulario,
-    Label, 
+    Label,
     GrupoInput,
     Input,
     LeyendaError,
