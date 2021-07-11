@@ -4,7 +4,7 @@ import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const ComponenteInput = ({estado, cambiarEstado, tipo, label, placeholder, name, leyendaError, expresionRegular}) =>{
+const ComponenteInput = ({estado, cambiarEstado, tipo, label, placeholder, name, leyendaError, expresionRegular, funcion}) =>{
   
   const onChange=(e)=>{
     cambiarEstado({...estado, campo: e.target.value})
@@ -18,11 +18,15 @@ const ComponenteInput = ({estado, cambiarEstado, tipo, label, placeholder, name,
         cambiarEstado({...estado, valido:'false'})
       }
     }
+    if(funcion){
+      funcion();
+    }
+    
   }
   
   return (
         <div>
-          <Label htmlFor="nombre">{label}</Label>
+          <Label htmlFor={name} valido={estado.valido}>{label}</Label>
           <GrupoInput>
             <Input 
             type={tipo}
@@ -36,7 +40,7 @@ const ComponenteInput = ({estado, cambiarEstado, tipo, label, placeholder, name,
             />
             <IconoValidacion 
             // condicional para mostrar el icono dependiendo del estado valido.
-              icon={estado.valido == 'true'? faCheckCircle:faTimesCircle} 
+              icon={estado.valido === 'true'? faCheckCircle:faTimesCircle} 
               valido = {estado.valido}/>
             
           </GrupoInput>

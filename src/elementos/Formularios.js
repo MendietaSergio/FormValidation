@@ -57,7 +57,6 @@ const LeyendaError = styled.p`
         margin-bottom: 0;
         color: ${colores.error};
         display: none;
-
         ${props => props.valido === 'true' && css`
             display: none;
         ` }
@@ -90,12 +89,20 @@ const ContenedorTerminos = styled.div`
         input{
             margin-right: 10px;
         }
+
+        @media (max-width: 800px){
+            grid-column: span 1;
+        }
 `;
 const ContenedorBotonCentrado = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
         grid-column: span 2;
+
+        @media (max-width: 800px){
+            grid-column: span 1;
+        }
 `;
 const Boton = styled.button`
         height: 45px;
@@ -116,7 +123,6 @@ const Boton = styled.button`
 const MensajeExito = styled.p`
         font-size: 14px;
         color: ${colores.exito};
-        display: none;
 
 `;
 const MensajeError = styled.div`
@@ -126,7 +132,6 @@ const MensajeError = styled.div`
         padding: 0px 15px;
         border-radius: 3px;
         grid-column: span 2;
-        display: none;
 
         p{
             margin:0;
