@@ -52,7 +52,7 @@ function App() {
       password2.valido === 'true' &&
       correo.valido === 'true' &&
       telefono.valido === 'true' &&
-      terminos.valido === 'true'){
+      terminos){
         cambiarFormularioValido(true)
         cambiarUsuario({campo: "", valido: null})
         cambiarNombre({campo: "", valido: null})
@@ -151,7 +151,7 @@ function App() {
         </MensajeError>}
         <ContenedorBotonCentrado>
           <Boton type="submit" >Enviar</Boton>
-          {formularioValido && <MensajeExito>Formulario enviado correctamente!</MensajeExito> }
+          {formularioValido === true && <MensajeExito>Formulario enviado correctamente!</MensajeExito> }
         </ContenedorBotonCentrado>
       </Formulario>
     </main>
